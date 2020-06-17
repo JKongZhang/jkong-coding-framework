@@ -1,0 +1,9 @@
+<mapper namespace="me.jkong.mybatis.dao.IUserDao">
+    <select id="selectOne" paramterType="me.jkong.mybatis.entity.User"
+            resultType="me.jkong.mybatis.entity.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+    <select id="findAll" resultType="me.jkong.mybatis.entity.User">
+        select * from user
+    </select>
+</mapper>
