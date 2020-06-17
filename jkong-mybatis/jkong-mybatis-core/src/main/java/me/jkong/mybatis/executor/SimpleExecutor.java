@@ -73,18 +73,14 @@ public class SimpleExecutor implements Executor {
                 // 字段的值
                 Object value = resultSet.getObject(columnName);
 
-                //使用反射或者内省，根据数据库表和实体的对应关系，完成封装
+                // 使用反射或者内省，根据数据库表和实体的对应关系，完成封装
                 PropertyDescriptor propertyDescriptor = new PropertyDescriptor(columnName, resultTypeClass);
                 Method writeMethod = propertyDescriptor.getWriteMethod();
                 writeMethod.invoke(o, value);
-
-
             }
             objects.add(o);
-
         }
         return (List<E>) objects;
-
     }
 
     @Override
@@ -94,8 +90,7 @@ public class SimpleExecutor implements Executor {
 
     private Class<?> getClassType(String paramterType) throws ClassNotFoundException {
         if (paramterType != null) {
-            Class<?> aClass = Class.forName(paramterType);
-            return aClass;
+            return Class.forName(paramterType);
         }
         return null;
 
@@ -105,8 +100,8 @@ public class SimpleExecutor implements Executor {
     /**
      * 完成对#{}的解析工作：1.将#{}使用？进行代替，2.解析出#{}里面的值进行存储
      *
-     * @param sql
-     * @return
+     * @param sql 需要处理的SQL
+     * @return 返回处理后的SQL，并封装站位参数
      */
     private BoundSql getBoundSql(String sql) {
         //标记处理类：配置标记解析器来完成对占位符的解析处理工作
@@ -117,8 +112,7 @@ public class SimpleExecutor implements Executor {
         //#{}里面解析出来的参数名称
         List<ParameterMapping> parameterMappings = parameterMappingTokenHandler.getParameterMappings();
 
-        BoundSql boundSql = new BoundSql(parseSql, parameterMappings);
-        return boundSql;
+        return new BoundSql(parseSql, parameterMappings);
 
     }
 

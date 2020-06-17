@@ -34,8 +34,8 @@ public class JKongMyBatisMainDemo {
 
         // 查询一条数据
         User user = new User();
-        user.setId(2);
-        user.setUsername("张三");
+        user.setId(1L);
+        user.setUsername("JKong");
         System.out.println(userDao.selectOne(user));
     }
 

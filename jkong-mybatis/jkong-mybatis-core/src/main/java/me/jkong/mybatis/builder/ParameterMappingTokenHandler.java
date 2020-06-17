@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO
+ * 此Handler主要解决SQL中占位符的参数问题
  *
  * @author JKong
  * @version v0.0.1
  * @date 2020/6/16 11:24.
  */
 public class ParameterMappingTokenHandler implements TokenHandler {
-    private List<ParameterMapping> parameterMappings = new ArrayList<ParameterMapping>();
+    private List<ParameterMapping> parameterMappings = new ArrayList<>();
 
     /**
      * context是参数名称 #{id} #{username}
      *
-     * @param content
-     * @return
+     * @param content sql
+     * @return 将sql中的的站位参数替换为'?'
      */
     @Override
     public String handleToken(String content) {
@@ -26,8 +26,7 @@ public class ParameterMappingTokenHandler implements TokenHandler {
     }
 
     private ParameterMapping buildParameterMapping(String content) {
-        ParameterMapping parameterMapping = new ParameterMapping(content);
-        return parameterMapping;
+        return new ParameterMapping(content);
     }
 
     public List<ParameterMapping> getParameterMappings() {

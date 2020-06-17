@@ -9,14 +9,21 @@ package me.jkong.mybatis.entity;
  */
 public class User {
 
-    private Integer id;
+    /**
+     * 用户ID
+     */
+    private Long id;
+
+    /**
+     * 用户名
+     */
     private String username;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
