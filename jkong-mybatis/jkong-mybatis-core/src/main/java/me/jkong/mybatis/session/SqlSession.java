@@ -1,6 +1,5 @@
 package me.jkong.mybatis.session;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface SqlSession {
@@ -9,7 +8,6 @@ public interface SqlSession {
 
     //根据条件查询单个
     public <T> T selectOne(String statementid, Object... params) throws Exception;
-
 
     //为Dao接口生成代理实现类
     public <T> T getMapper(Class<?> mapperClass);

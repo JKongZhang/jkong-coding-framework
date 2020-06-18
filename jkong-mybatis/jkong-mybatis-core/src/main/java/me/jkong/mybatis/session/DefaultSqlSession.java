@@ -8,6 +8,11 @@ import java.lang.reflect.*;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * {@link SqlSession} 默认实现类，主要管理SQL执行
+ *
+ * @author JKong
+ */
 public class DefaultSqlSession implements SqlSession {
 
     private Configuration configuration;
@@ -37,8 +42,8 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public <T> T getMapper(Class<?> mapperClass) {
-        // 使用JDK动态代理来为Dao接口生成代理对象，并返回
 
+        // 使用JDK动态代理来为Dao接口生成代理对象，并返回
         Object proxyInstance = Proxy.newProxyInstance(DefaultSqlSession.class.getClassLoader(), new Class[]{mapperClass}, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

@@ -21,10 +21,14 @@ public class JKongMyBatisMainDemo {
 
     public static void main(String[] args) throws Exception {
 
+        // 框架入口：指定文件路径，加载配置信息
         InputStream resourceAsSteam = Resources.getResourceAsSteam("/jkong-mybatis-config.xml");
+        // 创建Sql工厂：SqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsSteam);
+        // 获取用来执行SQL操作的 SQLSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
+        // 获取 Mapper 对象
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
         // 查询所有记录
         List<User> all = userDao.findAll();
@@ -32,7 +36,7 @@ public class JKongMyBatisMainDemo {
             System.out.println(user1);
         }
 
-        // 查询一条数据
+        // 使用同一个SqlSession，再查询一条数据
         User user = new User();
         user.setId(1L);
         user.setUsername("JKong");

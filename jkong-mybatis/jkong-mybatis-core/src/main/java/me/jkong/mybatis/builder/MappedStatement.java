@@ -1,7 +1,7 @@
 package me.jkong.mybatis.builder;
 
 /**
- * mapper xml 配置文件的映射类
+ * mapper xml 配置文件的 SQL 配置的映射类
  *
  * @author JKong
  */
