@@ -1,0 +1,9 @@
+<mapper namespace="com.github.laba.mybatis.dao.IUserDao">
+    <select id="selectOne" paramterType="com.github.laba.mybatis.entity.User"
+            resultType="com.github.laba.mybatis.entity.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+    <select id="findAll" resultType="com.github.laba.mybatis.entity.User">
+        select * from user
+    </select>
+</mapper>
