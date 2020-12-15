@@ -148,4 +148,43 @@ public class BeanContainer {
     public Set<Object> getBeans() {
         return new HashSet<>(beanMap.values());
     }
+
+    /**
+     * 获取某注解的 class
+     *
+     * @param annotation 指定注解
+     * @return 标有指定注解的 Class 对象
+     */
+    public Set<Class<?>> getClassesByAnnotation(Class<? extends Annotation> annotation) {
+        if (size() == 0) {
+            return null;
+        }
+        Set<Class<?>> classSet = new HashSet<>();
+        for (Class<?> clazz : getClasses()) {
+            if (clazz.isAnnotationPresent(annotation)) {
+                classSet.add(clazz);
+            }
+        }
+        return classSet.size() > 0 ? classSet : null;
+    }
+
+    /**
+     * 获取当前接口或类的子类
+     *
+     * @param interfaceOrClass 类或者接口
+     * @return 子类集合
+     */
+    public Set<Class<?>> getClassesBySuper(Class<?> interfaceOrClass) {
+        if (size() == 0) {
+            return null;
+        }
+        Set<Class<?>> classSet = new HashSet<>();
+        for (Class<?> clazz : getClasses()) {
+            //判断是否是我的子类
+            if (interfaceOrClass.isAssignableFrom(clazz)) {
+                classSet.add(clazz);
+            }
+        }
+        return classSet.size() > 0 ? classSet : null;
+    }
 }

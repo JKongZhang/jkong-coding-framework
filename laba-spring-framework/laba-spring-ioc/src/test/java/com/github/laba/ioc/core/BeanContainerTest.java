@@ -4,9 +4,7 @@ import com.github.laba.ioc.core.annotation.Component;
 import com.github.laba.ioc.core.annotation.Controller;
 import com.github.laba.ioc.core.annotation.Repository;
 import com.github.laba.ioc.core.annotation.Service;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 /**
  * 测试 BeanContainer
@@ -19,15 +17,40 @@ class BeanContainerTest {
     @BeforeEach
     void setUp() {
         container = BeanContainer.getInstance();
+        container.loadBeans("com.github.laba.ioc.core");
     }
 
     @Test
     void loadBeans() {
-        Assertions.assertFalse(container.isLoaded());
-        container.loadBeans("com.github.laba.ioc.core");
         Assertions.assertTrue(container.isLoaded());
         Assertions.assertEquals(4, container.size());
     }
+
+
+    @Test
+    @Order(2)
+    @DisplayName("根据类获取实例：getBeanTest")
+    public void getBeansTest() {
+        TestClass1 testClass1 = container.getBean(TestClass1.class);
+        Assertions.assertTrue(testClass1 instanceof TestClass1);
+    }
+
+    @Test
+    @Order(3)
+    @DisplayName("根据注解获取实例")
+    public void getClassByAnnotationTest() {
+        Assertions.assertTrue(container.isLoaded());
+        Assertions.assertEquals(1, container.getClassesByAnnotation(Controller.class).size());
+    }
+
+    @Test
+    @DisplayName("根据接口获取实例")
+    @Order(4)
+    public void getClassBySuperClass() {
+        Assertions.assertTrue(container.isLoaded());
+        Assertions.assertTrue(container.getClassesBySuper(TestClass3.class).contains(TestClass4.class));
+    }
+
 
     @Component
     public static class TestClass1 {
@@ -45,7 +68,7 @@ class BeanContainerTest {
     }
 
     @Repository
-    public static class TestClass4 {
+    public static class TestClass4 extends TestClass3 {
 
     }
 

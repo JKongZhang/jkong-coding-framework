@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.File;
 import java.io.FileFilter;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.HashSet;
@@ -140,6 +141,23 @@ public class ClassUtil {
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             log.error("instance error,", e);
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 将值设置到对象的属性中
+     *
+     * @param field      对象需要被设置值的属性
+     * @param target     目标类实例
+     * @param value      成员变量的值
+     * @param accessible 是否支持通过是有属性设置值
+     */
+    public static void setField(Field field, Object target, Object value, boolean accessible) {
+        field.setAccessible(accessible);
+        try {
+            field.set(target, value);
+        } catch (IllegalAccessException e) {
+            log.warn("failed to set value, with err " + e);
         }
     }
 }
