@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 定义SQL执行方法
  *
- * @author JKong
+ * @author laba zhang
  */
 public interface Executor {
     /**

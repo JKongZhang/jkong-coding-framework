@@ -5,7 +5,7 @@ import java.io.InputStream;
 /**
  * XML文本数据读取类
  *
- * @author JKong
+ * @author laba zhang
  */
 public class Resources {
 
@@ -14,7 +14,7 @@ public class Resources {
      *
      * @param path 文件路径
      *             根据路下文件：/
-     * @return
+     * @return in
      */
     public static InputStream getResourceAsSteam(String path) {
         return Resources.class.getResourceAsStream(path);

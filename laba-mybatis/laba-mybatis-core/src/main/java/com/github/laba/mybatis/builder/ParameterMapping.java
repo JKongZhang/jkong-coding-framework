@@ -1,5 +1,10 @@
 package com.github.laba.mybatis.builder;
 
+/**
+ * sql 请求参数实体
+ *
+ * @author laba zhang
+ */
 public class ParameterMapping {
 
     private String content;

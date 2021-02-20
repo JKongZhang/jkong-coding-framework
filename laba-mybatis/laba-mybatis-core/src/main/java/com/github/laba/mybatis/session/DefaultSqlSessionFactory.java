@@ -3,7 +3,7 @@ package com.github.laba.mybatis.session;
 /**
  * {@link SqlSessionFactory} 默认实现类，用来创建 {@link SqlSession}
  *
- * @author JKong
+ * @author laba zhang
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 

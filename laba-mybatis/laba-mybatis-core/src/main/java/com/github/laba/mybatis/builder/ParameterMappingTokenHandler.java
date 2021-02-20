@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 此Handler主要解决SQL中占位符的参数问题
  *
- * @author JKong
+ * @author laba zhang
  * @version v0.0.1
  * @date 2020/6/16 11:24.
  */

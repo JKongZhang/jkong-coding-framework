@@ -13,6 +13,11 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * 解析配置文件内容，将内容封装为{@link Configuration} 对象
+ *
+ * @author laba zhang
+ */
 public class XMLConfigBuilder {
 
     private Configuration configuration;
@@ -37,23 +42,21 @@ public class XMLConfigBuilder {
             properties.setProperty(name, value);
         }
 
+        // 配置数据源连接池
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         comboPooledDataSource.setDriverClass(properties.getProperty("driver"));
         comboPooledDataSource.setJdbcUrl(properties.getProperty("url"));
         comboPooledDataSource.setUser(properties.getProperty("username"));
         comboPooledDataSource.setPassword(properties.getProperty("password"));
-
         configuration.setDataSource(comboPooledDataSource);
 
         //mapper.xml解析: 拿到路径--字节输入流---dom4j进行解析
         List<Element> mapperList = rootElement.selectNodes("//mapper");
-
         for (Element element : mapperList) {
             String mapperPath = element.attributeValue("resource");
             InputStream resourceAsSteam = Resources.getResourceAsSteam(mapperPath);
             XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(configuration);
             xmlMapperBuilder.parse(resourceAsSteam);
-
         }
         return configuration;
     }

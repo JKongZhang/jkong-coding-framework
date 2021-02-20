@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * jkong-mybatis 核心配置类
+ * laba zhang-mybatis 核心配置类
  *
- * @author JKong
+ * @author laba zhang
  */
 public class Configuration {
 

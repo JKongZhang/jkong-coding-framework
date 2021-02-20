@@ -11,18 +11,18 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * 测试JKong MyBatis 整体流程
+ * 测试laba MyBatis 整体流程
  *
- * @author JKong
+ * @author laba zhang
  * @version v0.0.1
  * @date 2020/6/17 16:04.
  */
-public class JKongMyBatisMainDemo {
+public class MyBatisMainDemo {
 
     public static void main(String[] args) throws Exception {
 
         // 框架入口：指定文件路径，加载配置信息
-        InputStream resourceAsSteam = Resources.getResourceAsSteam("/jkong-mybatis-config.xml");
+        InputStream resourceAsSteam = Resources.getResourceAsSteam("/laba-mybatis-config.xml");
         // 创建Sql工厂：SqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsSteam);
         // 获取用来执行SQL操作的 SQLSession
@@ -39,7 +39,7 @@ public class JKongMyBatisMainDemo {
         // 使用同一个SqlSession，再查询一条数据
         User user = new User();
         user.setId(1L);
-        user.setUsername("JKong");
+        user.setUsername("laba");
         System.out.println(userDao.selectOne(user));
     }
 

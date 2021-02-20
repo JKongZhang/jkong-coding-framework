@@ -2,8 +2,9 @@ package com.github.laba.mybatis.builder;
 
 /**
  * mapper xml 配置文件的 SQL 配置的映射类
+ * 每一个 MappedStatement 对象，对应一条 SQL 配置
  *
- * @author JKong
+ * @author laba zhang
  */
 public class MappedStatement {
     /**

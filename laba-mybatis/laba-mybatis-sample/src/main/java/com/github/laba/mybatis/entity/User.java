@@ -3,7 +3,7 @@ package com.github.laba.mybatis.entity;
 /**
  * 用户实体
  *
- * @author JKong
+ * @author laba zhang
  * @version v0.0.1
  * @date 2020/6/16 10:45.
  */

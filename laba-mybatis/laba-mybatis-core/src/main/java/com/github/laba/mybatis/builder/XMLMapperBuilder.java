@@ -21,9 +21,9 @@ public class XMLMapperBuilder {
 
         Document document = new SAXReader().read(inputStream);
         Element rootElement = document.getRootElement();
-
         String namespace = rootElement.attributeValue("namespace");
 
+        // todo 此处只处理了 select 标签，需要扩展 update | delete | insert
         List<Element> list = rootElement.selectNodes("//select");
         for (Element element : list) {
             String id = element.attributeValue("id");

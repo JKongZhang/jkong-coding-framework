@@ -9,7 +9,7 @@ import java.io.InputStream;
 /**
  * {@link SqlSessionFactory} 建造者
  *
- * @author JKong
+ * @author laba zhang
  */
 public class SqlSessionFactoryBuilder {
 

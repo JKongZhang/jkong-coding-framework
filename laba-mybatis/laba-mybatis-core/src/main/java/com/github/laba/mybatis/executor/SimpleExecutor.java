@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * 简单SQL执行
  *
- * @author JKong
+ * @author laba zhang
  */
 public class SimpleExecutor implements Executor {
 
@@ -55,7 +55,7 @@ public class SimpleExecutor implements Executor {
         }
 
 
-        // 5. 执行sql
+        // 5. 处理 sql 执行 结果
         ResultSet resultSet = preparedStatement.executeQuery();
         String resultType = mappedStatement.getResultType();
         Class<?> resultTypeClass = getClassType(resultType);
@@ -94,9 +94,7 @@ public class SimpleExecutor implements Executor {
             return Class.forName(paramterType);
         }
         return null;
-
     }
-
 
     /**
      * 完成对#{}的解析工作：1.将#{}使用？进行代替，2.解析出#{}里面的值进行存储

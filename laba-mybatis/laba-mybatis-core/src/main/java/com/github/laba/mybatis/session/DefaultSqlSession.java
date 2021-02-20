@@ -5,13 +5,12 @@ import com.github.laba.mybatis.builder.MappedStatement;
 import com.github.laba.mybatis.executor.SimpleExecutor;
 
 import java.lang.reflect.*;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
  * {@link SqlSession} 默认实现类，主要管理SQL执行
  *
- * @author JKong
+ * @author laba zhang
  */
 public class DefaultSqlSession implements SqlSession {
 
@@ -47,7 +46,8 @@ public class DefaultSqlSession implements SqlSession {
         Object proxyInstance = Proxy.newProxyInstance(DefaultSqlSession.class.getClassLoader(), new Class[]{mapperClass}, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                // 底层都还是去执行JDBC代码 //根据不同情况，来调用selctList或者selectOne
+                // 底层都还是去执行JDBC代码
+                // 根据不同情况，来调用selctList或者selectOne
                 // 准备参数 1：statmentid :sql语句的唯一标识：namespace.id= 接口全限定名.方法名
                 // 方法名：findAll
                 String methodName = method.getName();
