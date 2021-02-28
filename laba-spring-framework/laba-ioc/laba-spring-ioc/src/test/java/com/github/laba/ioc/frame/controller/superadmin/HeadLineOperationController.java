@@ -5,7 +5,7 @@ package com.github.laba.ioc.frame.controller.superadmin;
 //import com.github.laba.ioc.entity.bo.HeadLine;
 //import com.github.laba.ioc.entity.dto.Result;
 //import com.github.laba.ioc.entity.test.Paper_url;
-//import com.github.laba.ioc.frame.service.HeadLineService;
+//import com.github.laba.ioc.frame.com.github.laba.mvc.service.HeadLineService;
 //import com.github.laba.ioc.inject.annotation.Autowired;
 //
 //import javax.management.Query;
